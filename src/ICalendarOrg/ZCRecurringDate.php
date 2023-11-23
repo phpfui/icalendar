@@ -80,7 +80,6 @@ class ZCRecurringDate
 	/**
 	 * repeating frequency type (i.e. 'y' for yearly, 'm' for monthly)
 	 *
-	 * @var string
 	 */
 	public ?string $freq = null;
 
@@ -93,7 +92,6 @@ class ZCRecurringDate
 	/**
 	 * repeat mode ('c': count, 'u': until)
 	 *
-	 * @var string
 	 */
 	public ?string $repeatmode = null;
 
@@ -106,14 +104,12 @@ class ZCRecurringDate
 	/**
 	 * start date in Unix Timestamp format (local timezone)
 	 *
-	 * @var int
 	 */
 	public ?int $startdate = null;
 
 	/**
 	 * timezone of event (using PHP timezones)
 	 *
-	 * @var string
 	 */
 	public ?string $tzid = null;
 
