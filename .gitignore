@@ -4,6 +4,7 @@ bin/
 composer.lock
 .php_cs.cache
 .phpunit.result.cache
+.phpunit.cache
 phpunit.xml
 .php-cs-fixer.cache
 

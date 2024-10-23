@@ -7,8 +7,10 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source
  * code
- *
  */
+
+use PHPUnit\Framework\Attributes\DataProvider;
+
 class ZCiCalDataNodeTest extends \PHPUnit\Framework\TestCase
 	{
 	/**
@@ -94,9 +96,7 @@ Participants: John Smith, Jane Doe, Jim Dandy
 		];
 		}
 
-	/**
-	 * @dataProvider providerZCiCalDataNode
-	 */
+	#[DataProvider('providerZCiCalDataNode')]
 	public function testZCiCalDataNode(string $line) : void
 		{
 		$dataNode = new \ICalendarOrg\ZCiCalDataNode($line);

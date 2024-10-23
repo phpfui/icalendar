@@ -7,8 +7,10 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source
  * code
- *
  */
+
+use PHPUnit\Framework\Attributes\DataProvider;
+
 class FileTest extends \PHPUnit\Framework\TestCase
 	{
 	/**
@@ -36,9 +38,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
 		return $contents;
 		}
 
-	/**
-	 * @dataProvider providerICSFiles
-	 */
+	#[DataProvider('providerICSFiles')]
 	public function testICSFiles(string $contents, string $file) : void
 		{
 		$this->assertNotEmpty($contents);
