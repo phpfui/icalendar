@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Create list of dates from recurring rule
  *
@@ -123,7 +124,6 @@ class ZCRecurringDate
 	/**
 	 * start of week number (i.e. 0 for Sunday, 5 for Friday)
 	 *
-	 * @var ?integer
 	 */
 	public ?int $weekstart = null;
 
@@ -550,12 +550,12 @@ class ZCRecurringDate
 				}
 			}
 
-		if ('u' == $this->repeatmode && $rdates[(\is_countable($rdates) ? \count($rdates) : 0) - 1] > $this->until)
+		if ('u' == $this->repeatmode && $rdates[\count($rdates) - 1] > $this->until)
 			{
 			// erase last item
 			\array_pop($rdates);
 			}
-		$count1 = \is_countable($rdates) ? \count($rdates) : 0;
+		$count1 = \count($rdates);
 		$rdates = \array_unique($rdates);
 		$count2 = \count($rdates);
 		$dups = $count1 - $count2;
@@ -626,7 +626,7 @@ class ZCRecurringDate
 	 *
 	 * @param int $startdate start date of repeating events, in Unix timestamp format
 	 * @param int $enddate end date of repeating events, in Unix timestamp format
-	 * @param array<int> $rdates array to contain expanded repeating dates
+	 * @param array<int|bool> $rdates array to contain expanded repeating dates
 	 * @param string $tzid timezone of event (using PHP timezones)
 	 *
 	 * @return int count of dates
@@ -750,7 +750,7 @@ class ZCRecurringDate
 	 *
 	 * @param int $startdate start date of repeating events, in Unix timestamp format
 	 * @param int $enddate end date of repeating events, in Unix timestamp format
-	 * @param array<int> $rdates array to contain expanded repeating dates
+	 * @param array<int|bool> $rdates array to contain expanded repeating dates
 	 * @param string $tzid timezone of event (using PHP timezones)
 	 *
 	 * @return int count of dates
@@ -795,7 +795,7 @@ class ZCRecurringDate
 	 *
 	 * @param int $startdate start date of repeating events, in Unix timestamp format
 	 * @param int $enddate end date of repeating events, in Unix timestamp format
-	 * @param array<int> $rdates array to contain expanded repeating dates
+	 * @param array<int|bool> $rdates array to contain expanded repeating dates
 	 * @param string $tzid timezone of event (using PHP timezones)
 	 *
 	 * @return int count of dates
@@ -839,7 +839,7 @@ class ZCRecurringDate
 	 *
 	 * @param int $startdate start date of repeating events, in Unix timestamp format
 	 * @param int $enddate end date of repeating events, in Unix timestamp format
-	 * @param array<int> $rdates array to contain expanded repeating dates
+	 * @param array<int|bool> $rdates array to contain expanded repeating dates
 	 * @param string $tzid timezone of event (using PHP timezones)
 	 *
 	 * @return int count of dates
@@ -883,7 +883,7 @@ class ZCRecurringDate
 	 *
 	 * @param int $startdate start date of repeating events, in Unix timestamp format
 	 * @param int $enddate end date of repeating events, in Unix timestamp format
-	 * @param array<int> $rdates array to contain expanded repeating dates
+	 * @param array<int|bool> $rdates array to contain expanded repeating dates
 	 * @param string $tzid timezone of event (using PHP timezones)
 	 *
 	 * @return int count of dates
@@ -932,7 +932,7 @@ class ZCRecurringDate
 	 *
 	 * @param int $startdate start date of repeating events, in Unix timestamp format
 	 * @param int $enddate end date of repeating events, in Unix timestamp format
-	 * @param array<int> $rdates array to contain expanded repeating dates
+	 * @param array<int|bool> $rdates array to contain expanded repeating dates
 	 * @param string $tzid timezone of event (using PHP timezones)
 	 *
 	 * @return int count of dates
@@ -967,7 +967,7 @@ class ZCRecurringDate
 	 *
 	 * @param int $startdate start date of repeating events, in Unix timestamp format
 	 * @param int $enddate end date of repeating events, in Unix timestamp format
-	 * @param array<int> $rdates array to contain expanded repeating dates
+	 * @param array<int|bool> $rdates array to contain expanded repeating dates
 	 * @param string $tzid timezone of event (using PHP timezones)
 	 *
 	 * @return int count of dates
