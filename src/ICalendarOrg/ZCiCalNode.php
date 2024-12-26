@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Create iCalendar data structure
  *
@@ -140,31 +141,26 @@ class ZCiCalNode
 			}
 		$txtstr .= 'BEGIN:' . $node->getName() . "\r\n";
 
-		if (\property_exists($node, 'data'))
+		foreach ($node->data as $d)
 			{
-			foreach ($node->data as $d)
+			if (\is_array($d))
 				{
-				if (\is_array($d))
+				foreach ($d as $c)
 					{
-					foreach ($d as $c)
-						{
-						$txtstr .= $c;
-						}
+					$txtstr .= $c;
 					}
-				else
-					{
-					$txtstr .= $d;
-					}
+				}
+			else
+				{
+				$txtstr .= $d;
 				}
 			}
 
-		if (\property_exists($node, 'child'))
+		foreach ($node->child as $c)
 			{
-			foreach ($node->child as $c)
-				{
-				$txtstr .= $node->export($c, $level + 1);
-				}
+			$txtstr .= $node->export($c, $level + 1);
 			}
+
 		$txtstr .= 'END:' . $node->getName() . "\r\n";
 
 		return $txtstr;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Date helper class
  *

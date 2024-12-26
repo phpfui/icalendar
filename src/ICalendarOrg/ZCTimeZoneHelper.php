@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Create timezone data for use in icalendar file
  *
