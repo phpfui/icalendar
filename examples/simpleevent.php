@@ -1,4 +1,5 @@
 <?php
+
 /**
  * simpleevent.php
  *
@@ -24,6 +25,9 @@ $event_end = '2020-01-01 13:00:00';
 
 // create the ical object
 $icalobj = new \ICalendarOrg\ZCiCal();
+
+// add name
+$icalobj->addDataNode(new \ICalendarOrg\ZCiCalDataNode('NAME:My Calendar Name'), new \ICalendarOrg\ZCiCalDataNode('PRODID:-//ZContent.net//ZapCalLib 1.0//EN'));
 
 // create the event within the ical object
 $eventobj = new \ICalendarOrg\ZCiCalNode('VEVENT', $icalobj->curnode);

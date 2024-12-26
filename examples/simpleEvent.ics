@@ -1,5 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
+NAME:My Calendar Name
 PRODID:-//ZContent.net//ZapCalLib 1.0//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
@@ -7,9 +8,9 @@ BEGIN:VEVENT
 SUMMARY:Simple Event
 DTSTART:20200101T120000
 DTEND:20200101T130000
-UID:2023-02-14-02-16-35@demo.icalendar.org
-DTSTAMP:20230214T021635
-Description: This is a simple event, using the Zap Calendar PHP lib 
-rary. Visit http://icalendar.org to validate icalendar files.
+UID:2024-12-26-15-58-12@demo.icalendar.org
+DTSTAMP:20241226T155812
+Description: This is a simple event, using the Zap Calendar PHP lib
+ rary. Visit http://icalendar.org to validate icalendar files.
 END:VEVENT
 END:VCALENDAR

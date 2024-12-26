@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Create iCalendar data structure
  *
@@ -210,16 +211,33 @@ class ZCiCal
 			$name = 'VCALENDAR';
 			$this->curnode = new \ICalendarOrg\ZCiCalNode($name, $this->curnode);
 			$this->tree = $this->curnode;
-			$datanode = new \ICalendarOrg\ZCiCalDataNode('VERSION:2.0');
-			$this->curnode->data[$datanode->getName()] = $datanode;
-
-			$datanode = new \ICalendarOrg\ZCiCalDataNode('PRODID:-//ZContent.net//ZapCalLib 1.0//EN');
-			$this->curnode->data[$datanode->getName()] = $datanode;
-			$datanode = new \ICalendarOrg\ZCiCalDataNode('CALSCALE:GREGORIAN');
-			$this->curnode->data[$datanode->getName()] = $datanode;
-			$datanode = new \ICalendarOrg\ZCiCalDataNode('METHOD:PUBLISH');
-			$this->curnode->data[$datanode->getName()] = $datanode;
+			$this->addDataNode(new \ICalendarOrg\ZCiCalDataNode('VERSION:2.0'));
+			$this->addDataNode(new \ICalendarOrg\ZCiCalDataNode('PRODID:-//ZContent.net//ZapCalLib 1.0//EN'));
+			$this->addDataNode(new \ICalendarOrg\ZCiCalDataNode('CALSCALE:GREGORIAN'));
+			$this->addDataNode(new \ICalendarOrg\ZCiCalDataNode('METHOD:PUBLISH'));
 			}
+		}
+
+	public function addDataNode(\ICalendarOrg\ZCiCalDataNode $dataNode, ?\ICalendarOrg\ZCiCalDataNode $beforeNode = null) : ZCiCal
+		{
+		if (! $beforeNode)
+			{
+			$this->tree->data[$dataNode->getName()] = $dataNode;
+
+			return $this;
+			}
+
+		// add name
+		$insertPosition = \array_search($beforeNode->getName(), \array_keys($this->tree->data));
+
+		if (false === $insertPosition)
+			{
+			throw new \UnexpectedValueException('Node ' . $beforeNode->getName() . ' not found in ' . __CLASS__);
+			}
+		// Create a new array with the new element inserted
+		$this->tree->data = \array_slice($this->tree->data, 0, $insertPosition) + [$dataNode->getName() => $dataNode] + \array_slice($this->tree->data, $insertPosition);
+
+		return $this;
 		}
 
 	/**
